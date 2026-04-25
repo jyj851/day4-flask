@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% set active_page = 'feed' %}
+
+{% block content %}
+<main class="w-full max-w-[720px] mx-auto px-margin-mobile pt-stack-md pb-40 flex flex-col">
+  <article class="flex flex-col gap-stack-md">
+    <div class="flex flex-col gap-base">
+      <div class="flex items-center gap-4 mb-4">
+        <span class="bg-secondary-container text-on-secondary-container px-3 py-1 font-label-sm text-label-sm rounded-full">JOURNAL</span>
+        <span class="text-secondary font-label-sm text-label-sm">{{ post.created_at.strftime('%B %d, %Y').upper() }}</span>
+      </div>
+      <h1 class="font-headline-xl text-primary tracking-tight">{{ post.title }}</h1>
+    </div>
+
+    <div class="flex flex-col gap-stack-sm text-primary mt-4">
+      {% for paragraph in post.content.split('\n') %}
+        {% if paragraph.strip() %}
+        <p class="font-body-lg text-body-lg">{{ paragraph }}</p>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="flex flex-wrap gap-2 mt-8 pt-8 border-t border-secondary-container">
+      <span class="bg-surface-container px-4 py-2 rounded-full font-label-sm text-label-sm text-secondary">#journal</span>
+    </div>
+  </article>
+
+  <!-- Bottom action bar -->
+  <div class="fixed bottom-0 left-0 w-full z-[60] bg-surface/95 backdrop-blur-md px-margin-mobile py-6 flex gap-4 border-t border-surface-container-high shadow-[0_-4px_24px_rgba(45,45,45,0.04)]">
+    <a href="/" class="flex-1 bg-surface-container text-primary py-4 px-6 rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 border border-outline-variant hover:bg-surface-container-high active:scale-95 transition-all">
+      <span class="material-symbols-outlined text-[20px]" data-icon="arrow_back">arrow_back</span>
+      Back to Feed
+    </a>
+  </div>
+</main>
+{% endblock %}

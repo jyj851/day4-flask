@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% set active_page = 'feed' %}
+
+{% block content %}
+<main class="max-w-screen-md w-full mx-auto px-margin-mobile pt-stack-md pb-32">
+  <!-- Header Section -->
+  <section class="mb-stack-lg">
+    <span class="font-label-sm text-secondary uppercase mb-2 block">Curated Thoughts</span>
+    <h2 class="font-headline-xl text-primary mb-4">Lately</h2>
+    <p class="font-body-lg text-on-surface-variant max-w-md">Reflections on design, slow living, and the intersection of digital and analog spaces.</p>
+  </section>
+
+  <!-- Blog Feed List -->
+  <div class="space-y-stack-md">
+    {% if posts %}
+      <!-- First post as Featured Card -->
+      {% if posts|length > 0 %}
+      <a href="/post/{{ posts[0].id }}" class="block bg-tertiary-container rounded-xl overflow-hidden group">
+        <div class="p-gutter">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-label-sm text-on-tertiary-container">JOURNAL</span>
+            <div class="w-1 h-1 bg-secondary rounded-full"></div>
+            <span class="font-label-sm text-on-tertiary-container">{{ posts[0].created_at.strftime('%B %d, %Y').upper() }}</span>
+          </div>
+          <h3 class="font-headline-lg text-white mb-stack-sm leading-tight">{{ posts[0].title }}</h3>
+          <p class="font-body-md text-on-tertiary-container mb-6">{{ posts[0].content[:120] }}...</p>
+          <span class="inline-flex items-center gap-2 bg-primary-fixed text-on-primary-fixed px-6 py-2.5 rounded-full font-label-md hover:opacity-90 transition-opacity">
+            Read Story
+            <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+          </span>
+        </div>
+      </a>
+      {% endif %}
+
+      <!-- Remaining posts as list items -->
+      {% if posts|length > 1 %}
+      <div class="space-y-4">
+        {% for post in posts[1:] %}
+        <a href="/post/{{ post.id }}" class="flex gap-gutter items-start p-gutter bg-surface-container-low rounded-lg border border-transparent hover:border-outline-variant transition-all cursor-pointer">
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-2 text-secondary">
+              <span class="font-label-sm">JOURNAL</span>
+              <span class="text-[8px]">&bull;</span>
+              <span class="font-label-sm">{{ post.created_at.strftime('%B %d, %Y').upper() }}</span>
+            </div>
+            <h4 class="font-headline-md text-primary mb-2">{{ post.title }}</h4>
+            <p class="font-body-md text-on-surface-variant line-clamp-2">{{ post.content[:100] }}...</p>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    {% else %}
+    <div class="text-center py-stack-lg">
+      <span class="material-symbols-outlined text-5xl text-secondary mb-4 block">edit_note</span>
+      <p class="font-body-lg text-secondary mb-6">No stories yet. Start writing your first post.</p>
+      <a href="/create" class="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-full font-label-md hover:opacity-90 transition-opacity">
+        <span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+        Write First Post
+      </a>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- End of Feed -->
+  {% if posts %}
+  <div class="mt-stack-lg text-center">
+    <div class="inline-flex items-center gap-4 text-secondary">
+      <div class="h-px w-8 bg-outline-variant"></div>
+      <span class="font-label-sm">End of Journal</span>
+      <div class="h-px w-8 bg-outline-variant"></div>
+    </div>
+  </div>
+  {% endif %}
+</main>
+
+<!-- FAB -->
+<a href="/create" class="fixed bottom-28 right-6 w-14 h-14 rounded-full bg-primary text-on-primary shadow-xl flex items-center justify-center z-40 active:scale-95 transition-transform">
+  <span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+</a>
+{% endblock %}

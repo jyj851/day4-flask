@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Journal - Article Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1a1c1a",
+                    "tertiary-container": "#2d2d2a",
+                    "primary-fixed-dim": "#c8c6c6",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "on-error": "#ffffff",
+                    "surface": "#faf9f6",
+                    "primary-container": "#2d2d2d",
+                    "on-tertiary-container": "#969490",
+                    "surface-container-high": "#e9e8e5",
+                    "on-secondary-fixed-variant": "#4a473e",
+                    "tertiary": "#181816",
+                    "surface-bright": "#faf9f6",
+                    "outline-variant": "#c4c7c7",
+                    "background": "#faf9f6",
+                    "secondary-fixed": "#e8e2d6",
+                    "surface-container": "#efeeeb",
+                    "secondary": "#625e55",
+                    "on-secondary-fixed": "#1e1c14",
+                    "inverse-primary": "#c8c6c6",
+                    "on-primary-fixed-variant": "#474747",
+                    "inverse-surface": "#2f312f",
+                    "tertiary-fixed": "#e5e2dd",
+                    "on-primary-container": "#959494",
+                    "on-secondary-container": "#68645b",
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "surface-variant": "#e3e2e0",
+                    "on-primary": "#ffffff",
+                    "outline": "#747878",
+                    "on-surface-variant": "#444748",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f2f1ee",
+                    "primary-fixed": "#e4e2e1",
+                    "surface-tint": "#5f5e5e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#1a1c1a",
+                    "on-primary-fixed": "#1b1c1c",
+                    "surface-container-highest": "#e3e2e0",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#cbc6ba",
+                    "surface-container-low": "#f4f3f1",
+                    "error": "#ba1a1a",
+                    "primary": "#181919",
+                    "surface-dim": "#dbdad7",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#e8e2d6",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1120px",
+                    "stack-lg": "64px",
+                    "margin-mobile": "20px",
+                    "stack-sm": "16px",
+                    "stack-md": "32px",
+                    "gutter": "24px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Newsreader"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-lg": ["Newsreader"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "label-md": ["Be Vietnam Pro"],
+                    "headline-md": ["Newsreader"]
+            },
+            "fontSize": {
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center">
+<header class="bg-[#F5F5F0] dark:bg-[#1A1A1A] border-b border-[#E0E0D5] dark:border-[#2D2D2D] docked full-width top-0 z-50 fixed w-full">
+<div class="flex justify-between items-center w-full h-16 px-6 max-w-screen-md mx-auto">
+<button class="hover:bg-[#EBEBE0] dark:hover:bg-[#252525] transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined text-[#2D2D2D] dark:text-[#E2E2E2]" data-icon="menu">menu</span>
+</button>
+<span class="font-serif text-xl font-medium text-[#2D2D2D] dark:text-[#E2E2E2]">The Journal</span>
+<button class="hover:bg-[#EBEBE0] dark:hover:bg-[#252525] transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined text-[#2D2D2D] dark:text-[#E2E2E2]" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<div class="fixed top-16 left-0 w-full h-0.5 bg-secondary-container z-50">
+<div class="bg-primary h-full w-[45%]"></div>
+</div>
+<main class="w-full max-w-[720px] px-margin-mobile pt-32 pb-40 flex flex-col">
+<article class="flex flex-col gap-stack-md">
+<div class="flex flex-col gap-base">
+<div class="flex items-center gap-4 mb-4">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 font-label-sm text-label-sm rounded-full">ANTHROPOLOGY</span>
+<span class="text-secondary font-label-sm text-label-sm">8 MIN READ</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">The Quiet Rituals of the Morning</h1>
+<div class="flex items-center gap-3 mt-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high">
+<img alt="Author profile" class="w-full h-full object-cover" data-alt="close-up portrait of a thoughtful man in glasses with soft natural lighting against a neutral interior background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxBXQRjItIA5i3zHV9Lx7YsuZD4u7yuluA18fUCkhjaCbo7uMNhOvdEO6Z72vAL2xAjr6hpW_x2Xr7p23fs9f0ulS8BZ0117cHCB4ouAMmotsDn3PSO6socEcrQUBOnP66qqSTOCEpU0_GisoEsHEyVBMgS2ZXwxVI5PeJOJtdKRtkCZiRWQofb4aZFsBLLzoDIgVyFuO_uf8V22I8OvlDXF1kAfWyq41XqqMHikYOvom4ALGJ2SD9spTKJwL2tIIYVNqx85pKRmM"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Julian Thorne</p>
+<p class="font-label-sm text-label-sm text-secondary">Oct 12, 2023</p>
+</div>
+</div>
+</div>
+<div class="w-full h-[320px] rounded-xl overflow-hidden my-4 bg-surface-container">
+<img alt="Morning coffee" class="w-full h-full object-cover" data-alt="minimalist overhead shot of a ceramic coffee cup on a textured linen tablecloth with soft morning shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu-t4zPObHMmbyWXNW694O0hWzeXFQ0LO6daTuZ_tdNufFU353XeZJWT-YlvQsL-_eNGo-prDGj3L7BkMFjkduZzzIPoYC4h3DZjOMH6DhRJEbJ0XANGrF-XbIkBiK32gPSE2IY3IZ0tVr8hbbbmmoLS2dSRGvvSqymPxPxqfVfE6GdLQilAj7gyvVKIanqqzfUbaOwNM8Ew-nDl64YmMBSQWGSUhborDfS5EQP90JcZX3WpQ2YFoiB2JZkcFUXgenH7F9MMgWSxk"/>
+</div>
+<div class="flex flex-col gap-stack-sm text-primary">
+<p class="font-body-lg text-body-lg">
+                    There is a profound stillness that exists in the hour before the world begins to demand things of us. It is a time defined not by noise, but by the absence of it. In this sanctuary of dawn, we find ourselves briefly unburdened by the digital weight of our modern lives.
+                </p>
+<p class="font-body-lg text-body-lg">
+                    The ritual of the morning is not merely about preparation for the day ahead; it is a sacred container for reflection. As the first light filters through the linen curtains, casting elongated shadows across the oak floorboards, the simple act of brewing coffee becomes a meditative sequence of tactile sensations—the weight of the ceramic mug, the rising steam, the rhythmic pouring of water.
+                </p>
+<blockquote class="border-l-4 border-secondary-container pl-6 py-2 my-4 italic font-headline-md text-headline-md text-secondary">
+                    "True clarity is found in the moments we refuse to fill with noise."
+                </blockquote>
+<p class="font-body-lg text-body-lg">
+                    We have become a society that fears the silence. We plug our ears with podcasts and fill our visual fields with scrolling feeds the moment we wake. But to sit with one's thoughts, even for ten minutes, is to reclaim a territory of the mind that is increasingly under siege. It is in these quiet gaps that our most honest intentions are formed.
+                </p>
+<p class="font-body-lg text-body-lg">
+                    As you step into the bustle of your Tuesday, remember that this stillness is always available to you—tucked beneath the surface of the frantic, waiting for you to pause and recognize it once more.
+                </p>
+</div>
+<div class="flex flex-wrap gap-2 mt-8 pt-8 border-t border-secondary-container">
+<span class="bg-surface-container px-4 py-2 rounded-full font-label-sm text-label-sm text-secondary">#mindfulness</span>
+<span class="bg-surface-container px-4 py-2 rounded-full font-label-sm text-label-sm text-secondary">#morningritual</span>
+<span class="bg-surface-container px-4 py-2 rounded-full font-label-sm text-label-sm text-secondary">#minimalism</span>
+</div>
+</article>
+</main>
+<div class="fixed bottom-0 left-0 w-full z-[60] bg-surface/95 backdrop-blur-md px-margin-mobile py-6 flex gap-4 border-t border-surface-container-high shadow-[0_-4px_24px_rgba(45,45,45,0.04)]">
+<button class="flex-1 bg-primary text-on-primary py-4 px-6 rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit_note">edit_note</span>
+            Edit
+        </button>
+<button class="flex-1 bg-surface-container text-primary py-4 px-6 rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 border border-outline-variant hover:bg-surface-container-high active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+            Share
+        </button>
+<button class="bg-error-container text-on-error-container p-4 rounded-lg flex items-center justify-center hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-8 bg-[#F5F5F0]/90 dark:bg-[#1A1A1A]/90 backdrop-blur-md border-t border-[#E0E0D5] dark:border-[#2D2D2D] shadow-[0_-4px_24px_rgba(45,45,45,0.04)] hidden md:flex">
+<div class="flex flex-col items-center justify-center text-[#8C8C84] dark:text-[#666666] opacity-60 font-sans text-[10px] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+            Feed
+        </div>
+<div class="flex flex-col items-center justify-center text-[#2D2D2D] dark:text-[#FFFFFF] scale-105 font-sans text-[10px] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined" data-icon="edit_note" data-weight="fill" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+            Write
+        </div>
+<div class="flex flex-col items-center justify-center text-[#8C8C84] dark:text-[#666666] opacity-60 font-sans text-[10px] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+            Library
+        </div>
+</nav>
+</body></html>

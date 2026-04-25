@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Journal - Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Be+Vietnam+Pro:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config Verbatim -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#1a1c1a",
+                    "tertiary-container": "#2d2d2a",
+                    "primary-fixed-dim": "#c8c6c6",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "on-error": "#ffffff",
+                    "surface": "#faf9f6",
+                    "primary-container": "#2d2d2d",
+                    "on-tertiary-container": "#969490",
+                    "surface-container-high": "#e9e8e5",
+                    "on-secondary-fixed-variant": "#4a473e",
+                    "tertiary": "#181816",
+                    "surface-bright": "#faf9f6",
+                    "outline-variant": "#c4c7c7",
+                    "background": "#faf9f6",
+                    "secondary-fixed": "#e8e2d6",
+                    "surface-container": "#efeeeb",
+                    "secondary": "#625e55",
+                    "on-secondary-fixed": "#1e1c14",
+                    "inverse-primary": "#c8c6c6",
+                    "on-primary-fixed-variant": "#474747",
+                    "inverse-surface": "#2f312f",
+                    "tertiary-fixed": "#e5e2dd",
+                    "on-primary-container": "#959494",
+                    "on-secondary-container": "#68645b",
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "surface-variant": "#e3e2e0",
+                    "on-primary": "#ffffff",
+                    "outline": "#747878",
+                    "on-surface-variant": "#444748",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f2f1ee",
+                    "primary-fixed": "#e4e2e1",
+                    "surface-tint": "#5f5e5e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#1a1c1a",
+                    "on-primary-fixed": "#1b1c1c",
+                    "surface-container-highest": "#e3e2e0",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#cbc6ba",
+                    "surface-container-low": "#f4f3f1",
+                    "error": "#ba1a1a",
+                    "primary": "#181919",
+                    "surface-dim": "#dbdad7",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#e8e2d6",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1120px",
+                    "stack-lg": "64px",
+                    "margin-mobile": "20px",
+                    "stack-sm": "16px",
+                    "stack-md": "32px",
+                    "gutter": "24px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Newsreader"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-lg": ["Newsreader"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "label-md": ["Be Vietnam Pro"],
+                    "headline-md": ["Newsreader"]
+            },
+            "fontSize": {
+                    "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #faf9f6;
+            color: #1a1c1a;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .reading-progress {
+            height: 2px;
+            background: #e8e2d6;
+            position: sticky;
+            top: 64px;
+            z-index: 40;
+        }
+        .reading-progress-fill {
+            height: 100%;
+            width: 35%;
+            background: #625e55;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface selection:bg-secondary-container">
+<!-- TopAppBar -->
+<header class="bg-[#F5F5F0] dark:bg-[#1A1A1A] border-b border-[#E0E0D5] dark:border-[#2D2D2D] docked full-width top-0 z-50 sticky">
+<div class="flex justify-between items-center w-full h-16 px-6 max-w-screen-md mx-auto">
+<button class="text-[#2D2D2D] dark:text-[#E2E2E2] hover:bg-[#EBEBE0] dark:hover:bg-[#252525] transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-serif text-xl font-medium text-[#2D2D2D] dark:text-[#E2E2E2]">The Journal</h1>
+<button class="text-[#2D2D2D] dark:text-[#E2E2E2] hover:bg-[#EBEBE0] dark:hover:bg-[#252525] transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Reading Progress Bar -->
+<div class="reading-progress">
+<div class="reading-progress-fill"></div>
+</div>
+<!-- Content Canvas -->
+<main class="max-w-screen-md mx-auto px-margin-mobile pt-stack-md pb-32">
+<!-- Header Section -->
+<section class="mb-stack-lg">
+<span class="font-label-sm text-secondary uppercase mb-2 block">Curated Thoughts</span>
+<h2 class="font-headline-xl text-primary mb-4">Lately</h2>
+<p class="font-body-lg text-on-surface-variant max-w-md">Reflections on design, slow living, and the intersection of digital and analog spaces.</p>
+</section>
+<!-- Blog Feed List -->
+<div class="space-y-stack-md">
+<!-- Featured Card (Asymmetric Layout Item) -->
+<article class="bg-tertiary-container rounded-xl overflow-hidden group">
+<div class="aspect-video w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="minimalist wooden desk with a single notebook, high-quality pen, and a small ceramic cup of coffee in soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3AC5EgeGzFp7lLgfZAokz-p_zz_ud7hh4F0m19sraRVbQnGJkukissYQ9xJgx2QJk_AlUYykwtdKErfURKebwb3FQOc23qKxdIhReW-9v78hcluSqNxm-lvo32idks6CaatzxHRT0YtSpGGUFgQJt75bG5ICnSKEgta_C2EgscODuftImwrpUJyoKoUgwIvg8qsJodnlhAsv4lgXL8A47POdU8fxW2yLE4gyfnKpY0JwUd5YlipHdR5_gjE9oJWfeKmwn1zbkN30"/>
+</div>
+<div class="p-gutter">
+<div class="flex items-center gap-3 mb-3">
+<span class="font-label-sm text-on-tertiary-container">PHILOSOPHY</span>
+<div class="w-1 h-1 bg-secondary rounded-full"></div>
+<span class="font-label-sm text-on-tertiary-container">MARCH 12, 2024</span>
+</div>
+<h3 class="font-headline-lg text-white mb-stack-sm leading-tight">The Quiet Power of Analog Tools in a Digital Age</h3>
+<p class="font-body-md text-on-tertiary-container mb-6">In an era defined by notifications, the physical page offers a sanctuary of uninterrupted focus...</p>
+<button class="bg-primary-fixed text-on-primary-fixed px-6 py-2.5 rounded-full font-label-md flex items-center gap-2 hover:opacity-90 transition-opacity">
+                        Read Story
+                        <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Standard List Items with Tonal Layering -->
+<div class="space-y-4">
+<!-- Post Item 1 -->
+<article class="flex gap-gutter items-start p-gutter bg-surface-container-low rounded-lg border border-transparent hover:border-outline-variant transition-all cursor-pointer">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2 text-secondary">
+<span class="font-label-sm">DESIGN</span>
+<span class="text-[8px]">•</span>
+<span class="font-label-sm">5 MIN READ</span>
+</div>
+<h4 class="font-headline-md text-primary mb-2">Intentionality in Product Design</h4>
+<time class="font-label-sm text-on-surface-variant">MARCH 08, 2024</time>
+</div>
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="macro shot of clean typography on a high-quality paper texture with soft neutral shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW_UXdArf0KI0Jim0hzZ9K2l-c6Ssmzwr9ieN-CGDGdFHF_PWu7w21Wn1XhYtAjvmF2MNcSddavQmuGIO81MffzqbqsYDIFGS5lZKFUQOHgeM-q-m1qWo7yl07mP_N51CHb5aWqGKFfq3p0WXLSYt1ubpwHeDT6_c-cQKDLSmASmEcn2RlzZtpQ1W_SGDQcWJn9607C-iLDwkzAX4XzN5l14KrM7YxnJhXNheYMbEsb6UjwlaNOk7rvRrKnXC9vpNkkLl-cdPasBI"/>
+</div>
+</article>
+<!-- Post Item 2 -->
+<article class="flex gap-gutter items-start p-gutter bg-surface-container-low rounded-lg border border-transparent hover:border-outline-variant transition-all cursor-pointer">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2 text-secondary">
+<span class="font-label-sm">LIFESTYLE</span>
+<span class="text-[8px]">•</span>
+<span class="font-label-sm">8 MIN READ</span>
+</div>
+<h4 class="font-headline-md text-primary mb-2">Finding Focus in the Noise</h4>
+<time class="font-label-sm text-on-surface-variant">MARCH 05, 2024</time>
+</div>
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="a quiet interior scene with a large window overlooking a foggy forest and a minimalist armchair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1Oik3EXG5GYDXwboTIqWb7hPFOggc2RVSq4CoQ3DZ4FciT_QxV9a2g-6VIxsExF4xt9KmC_pJsh1x-VpOhpXF0CePo8Hn4Tdjf2nDUJzKkO02K4EXLKc34-mg8soYyA3B5yez6xbBNUgJ11zJpW9iVA6umvBxL2byh3tVSmno749jKJTAH1UKWtFbBFw73RBjJiR_p9v5ERQzr01oxJXFGLChbwL3ia3xIdR2XN5WoQGsQ03KQ0CcLVfJkxLRaYZA4B6cjUJUv94"/>
+</div>
+</article>
+<!-- Post Item 3 -->
+<article class="flex gap-gutter items-start p-gutter bg-surface-container-low rounded-lg border border-transparent hover:border-outline-variant transition-all cursor-pointer">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2 text-secondary">
+<span class="font-label-sm">ART</span>
+<span class="text-[8px]">•</span>
+<span class="font-label-sm">4 MIN READ</span>
+</div>
+<h4 class="font-headline-md text-primary mb-2">The Aesthetics of Minimalism</h4>
+<time class="font-label-sm text-on-surface-variant">FEBRUARY 28, 2024</time>
+</div>
+<div class="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="abstract geometric composition with soft shadows and a warm beige and charcoal color palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwkKNaVcWiOXqCRq4Mh-AE2nALjR-ovi7wd7euePBGPkdwpxunpmc3qFYro7qSFgZ-h1jMVbMxh-HflG9D4TLOoUCbhBqyXuK0cLAVTk2Xjvtm8BBid3p0FBZ9M1eD3JZn8XYHqoU2o97QHXOrdNuGOT2RXuW7Cp0lAwrl1Eq72liSEdcYVoUtWrEng2Tb2FxYR6zyV9AK7lKaqLxqPoVe8PfJOz5nKt5taoGm0A9sn1zoioMYnfbXUZqlX-oNShz2RPnU15M7bsY"/>
+</div>
+</article>
+</div>
+</div>
+<!-- Load More / End of Feed -->
+<div class="mt-stack-lg text-center">
+<div class="inline-flex items-center gap-4 text-secondary">
+<div class="h-px w-8 bg-outline-variant"></div>
+<span class="font-label-sm">End of Journal</span>
+<div class="h-px w-8 bg-outline-variant"></div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (Contextual Write) -->
+<button class="fixed bottom-28 right-6 w-14 h-14 rounded-full bg-primary text-on-primary shadow-xl flex items-center justify-center z-40 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-8 bg-[#F5F5F0]/90 dark:bg-[#1A1A1A]/90 backdrop-blur-md border-t border-[#E0E0D5] dark:border-[#2D2D2D] shadow-[0_-4px_24px_rgba(45,45,45,0.04)]">
+<!-- Feed Tab (Active) -->
+<div class="flex flex-col items-center justify-center text-[#2D2D2D] dark:text-[#FFFFFF] scale-105">
+<span class="material-symbols-outlined mb-1" data-icon="article" data-weight="fill" style="font-variation-settings: 'FILL' 1;">article</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-medium">Feed</span>
+</div>
+<!-- Write Tab -->
+<div class="flex flex-col items-center justify-center text-[#8C8C84] dark:text-[#666666] opacity-60 hover:text-[#2D2D2D] transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="edit_note">edit_note</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-medium">Write</span>
+</div>
+<!-- Library Tab -->
+<div class="flex flex-col items-center justify-center text-[#8C8C84] dark:text-[#666666] opacity-60 hover:text-[#2D2D2D] transition-colors">
+<span class="material-symbols-outlined mb-1" data-icon="auto_stories">auto_stories</span>
+<span class="font-sans text-[10px] uppercase tracking-widest font-medium">Library</span>
+</div>
+</nav>
+</body></html>

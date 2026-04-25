@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% set active_page = 'write' %}
+
+{% block content %}
+<main class="flex-1 w-full max-w-screen-md mx-auto px-margin-mobile pt-stack-sm pb-32">
+  <!-- Meta Info -->
+  <div class="flex items-center gap-base mb-stack-sm mt-8">
+    <span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">New Post</span>
+  </div>
+
+  <!-- Post Creator Form -->
+  <form method="POST" action="/create" class="flex flex-col space-y-stack-md">
+    <!-- Title Input -->
+    <div class="group border-b border-secondary/20 focus-within:border-tertiary transition-colors duration-300 pb-2">
+      <input type="text" name="title" required
+        class="w-full bg-transparent border-none focus:ring-0 focus:outline-none font-headline-xl text-headline-xl text-primary placeholder-primary/20"
+        placeholder="Untitled Masterpiece" />
+    </div>
+
+    <!-- Body Content Area -->
+    <div class="min-h-[400px]">
+      <textarea name="content" required
+        class="w-full bg-transparent border-none focus:ring-0 focus:outline-none font-body-lg text-body-lg text-secondary placeholder-secondary/40 resize-none"
+        placeholder="Begin your story here..." rows="15"></textarea>
+    </div>
+
+    <!-- Formatting Toolbar -->
+    <div class="flex items-center gap-gutter border-t border-secondary/10 pt-stack-sm pb-stack-lg">
+      <button type="submit"
+        class="flex items-center gap-2 px-6 py-2.5 bg-primary text-on-primary rounded-full hover:opacity-90 transition-opacity whitespace-nowrap">
+        <span class="material-symbols-outlined text-[18px]" data-icon="publish">publish</span>
+        <span class="font-label-sm text-label-sm">PUBLISH</span>
+      </button>
+      <a href="/"
+        class="flex items-center gap-2 px-6 py-2.5 bg-surface-container text-primary rounded-full border border-outline-variant hover:bg-surface-container-high transition-colors whitespace-nowrap">
+        <span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>
+        <span class="font-label-sm text-label-sm">CANCEL</span>
+      </a>
+    </div>
+  </form>
+</main>
+{% endblock %}
