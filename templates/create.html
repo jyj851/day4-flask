@@ -5,23 +5,23 @@
 <main class="flex-1 w-full max-w-screen-md mx-auto px-margin-mobile pt-stack-sm pb-32">
   <!-- Meta Info -->
   <div class="flex items-center gap-base mb-stack-sm mt-8">
-    <span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">New Post</span>
+    <span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">{% if editing %}Edit Post{% else %}New Post{% endif %}</span>
   </div>
 
   <!-- Post Creator Form -->
-  <form method="POST" action="/create" class="flex flex-col space-y-stack-md">
+  <form method="POST" action="{% if editing %}/edit/{{ post.id }}{% else %}/create{% endif %}" class="flex flex-col space-y-stack-md">
     <!-- Title Input -->
     <div class="group border-b border-secondary/20 focus-within:border-tertiary transition-colors duration-300 pb-2">
       <input type="text" name="title" required
         class="w-full bg-transparent border-none focus:ring-0 focus:outline-none font-headline-xl text-headline-xl text-primary placeholder-primary/20"
-        placeholder="Untitled Masterpiece" />
+        placeholder="Untitled Masterpiece" value="{% if editing %}{{ post.title }}{% endif %}" />
     </div>
 
     <!-- Body Content Area -->
     <div class="min-h-[400px]">
       <textarea name="content" required
         class="w-full bg-transparent border-none focus:ring-0 focus:outline-none font-body-lg text-body-lg text-secondary placeholder-secondary/40 resize-none"
-        placeholder="Begin your story here..." rows="15"></textarea>
+        placeholder="Begin your story here..." rows="15">{% if editing %}{{ post.content }}{% endif %}</textarea>
     </div>
 
     <!-- Formatting Toolbar -->
@@ -29,9 +29,9 @@
       <button type="submit"
         class="flex items-center gap-2 px-6 py-2.5 bg-primary text-on-primary rounded-full hover:opacity-90 transition-opacity whitespace-nowrap">
         <span class="material-symbols-outlined text-[18px]" data-icon="publish">publish</span>
-        <span class="font-label-sm text-label-sm">PUBLISH</span>
+        <span class="font-label-sm text-label-sm">{% if editing %}UPDATE{% else %}PUBLISH{% endif %}</span>
       </button>
-      <a href="/"
+      <a href="{% if editing %}/post/{{ post.id }}{% else %}/{% endif %}"
         class="flex items-center gap-2 px-6 py-2.5 bg-surface-container text-primary rounded-full border border-outline-variant hover:bg-surface-container-high transition-colors whitespace-nowrap">
         <span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>
         <span class="font-label-sm text-label-sm">CANCEL</span>
