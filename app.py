@@ -99,6 +99,8 @@ def post_delete(post_id):
     return redirect(url_for("post_list"))
 
 
-if __name__ == "__main__":
+with app.app_context():
     init_db()
+
+if __name__ == "__main__":
     app.run(debug=True)
