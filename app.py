@@ -35,13 +35,59 @@ def parse_post(row):
 
 @app.route("/")
 def post_list():
+    per_page = 10
+    page = request.args.get("page", 1, type=int) or 1
+    page = max(page, 1)
+    q = (request.args.get("q") or "").strip()
+    sort = request.args.get("sort", "new")
+
+    sort_orders = {
+        "new": "created_at DESC",
+        "old": "created_at ASC",
+        "title": "title COLLATE NOCASE ASC",
+    }
+    if sort not in sort_orders:
+        sort = "new"
+    order_by = sort_orders[sort]
+
     conn = get_db()
-    rows = conn.execute(
-        "SELECT * FROM posts ORDER BY created_at DESC"
-    ).fetchall()
+    if q:
+        like_q = f"%{q}%"
+        total_posts = conn.execute(
+            "SELECT COUNT(*) FROM posts WHERE title LIKE ? OR content LIKE ?",
+            (like_q, like_q),
+        ).fetchone()[0]
+    else:
+        total_posts = conn.execute("SELECT COUNT(*) FROM posts").fetchone()[0]
+
+    total_pages = (total_posts + per_page - 1) // per_page if total_posts else 1
+    page = min(page, total_pages)
+    offset = (page - 1) * per_page
+
+    if q:
+        like_q = f"%{q}%"
+        rows = conn.execute(
+            f"SELECT * FROM posts WHERE title LIKE ? OR content LIKE ? ORDER BY {order_by} LIMIT ? OFFSET ?",
+            (like_q, like_q, per_page, offset),
+        ).fetchall()
+    else:
+        rows = conn.execute(
+            f"SELECT * FROM posts ORDER BY {order_by} LIMIT ? OFFSET ?",
+            (per_page, offset),
+        ).fetchall()
+
     conn.close()
+
     posts = [parse_post(r) for r in rows]
-    return render_template("list.html", posts=posts)
+    return render_template(
+        "list.html",
+        posts=posts,
+        page=page,
+        total_pages=total_pages,
+        q=q,
+        has_search=bool(q),
+        sort=sort,
+    )
 
 
 @app.route("/post/<int:post_id>")

@@ -10,6 +10,16 @@
     <p class="font-body-lg text-on-surface-variant max-w-md">Reflections on design, slow living, and the intersection of digital and analog spaces.</p>
   </section>
 
+  <form action="/" method="get" class="mb-stack-lg flex items-center gap-3">
+    <input type="text" name="q" value="{{ q }}" placeholder="검색어 입력" class="flex-1 px-4 py-2.5 rounded-full border border-outline-variant bg-surface-container-low text-primary focus:outline-none" />
+    <select name="sort" onchange="this.form.submit()" class="px-4 py-2.5 rounded-full border border-outline-variant bg-surface-container-low text-primary focus:outline-none">
+      <option value="new" {% if sort == 'new' %}selected{% endif %}>최신순</option>
+      <option value="old" {% if sort == 'old' %}selected{% endif %}>오래된순</option>
+      <option value="title" {% if sort == 'title' %}selected{% endif %}>제목순 (가나다)</option>
+    </select>
+    <button type="submit" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-primary text-on-primary hover:opacity-90 transition-opacity">🔍 검색</button>
+  </form>
+
   <!-- Blog Feed List -->
   <div class="space-y-stack-md">
     {% if posts %}
@@ -52,24 +62,37 @@
       {% endif %}
     {% else %}
     <div class="text-center py-stack-lg">
+      {% if has_search %}
+      <span class="material-symbols-outlined text-5xl text-secondary mb-4 block">search_off</span>
+      <p class="font-body-lg text-secondary mb-6">검색 결과가 없습니다</p>
+      {% else %}
       <span class="material-symbols-outlined text-5xl text-secondary mb-4 block">edit_note</span>
       <p class="font-body-lg text-secondary mb-6">No stories yet. Start writing your first post.</p>
       <a href="/create" class="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-full font-label-md hover:opacity-90 transition-opacity">
         <span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
         Write First Post
       </a>
+      {% endif %}
     </div>
     {% endif %}
   </div>
 
-  <!-- End of Feed -->
-  {% if posts %}
-  <div class="mt-stack-lg text-center">
-    <div class="inline-flex items-center gap-4 text-secondary">
-      <div class="h-px w-8 bg-outline-variant"></div>
-      <span class="font-label-sm">End of Journal</span>
-      <div class="h-px w-8 bg-outline-variant"></div>
-    </div>
+  <!-- Pagination -->
+  {% if posts or has_search %}
+  <div class="mt-stack-lg flex items-center justify-center gap-4">
+    {% if page > 1 %}
+    <a href="/?page={{ page - 1 }}{% if q %}&q={{ q|urlencode }}{% endif %}{% if sort %}&sort={{ sort|urlencode }}{% endif %}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low text-primary border border-outline-variant hover:opacity-90 transition-opacity">이전</a>
+    {% else %}
+    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low text-secondary border border-outline-variant opacity-50 pointer-events-none">이전</span>
+    {% endif %}
+
+    <span class="font-label-md text-secondary">{{ page }} / {{ total_pages }}</span>
+
+    {% if page < total_pages %}
+    <a href="/?page={{ page + 1 }}{% if q %}&q={{ q|urlencode }}{% endif %}{% if sort %}&sort={{ sort|urlencode }}{% endif %}" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low text-primary border border-outline-variant hover:opacity-90 transition-opacity">다음</a>
+    {% else %}
+    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low text-secondary border border-outline-variant opacity-50 pointer-events-none">다음</span>
+    {% endif %}
   </div>
   {% endif %}
 </main>
