@@ -1,11 +1,12 @@
 import sqlite3
 import sys
+from pathlib import Path
 
 import requests
 
 from crawler import LIMIT, RSS_URL, fetch_news
 
-DATABASE = "journal.db"
+DATABASE = str(Path(__file__).with_name("journal.db"))
 
 
 def ensure_posts_table(conn: sqlite3.Connection) -> None:
@@ -28,14 +29,14 @@ def build_content(item: dict) -> str:
     return f"{summary}\n\n링크: {link}\n발행시간: {pub_date}".strip()
 
 
-def seed_posts() -> int:
+def seed_posts(database_path: str | None = None) -> int:
     try:
         news_items = fetch_news(RSS_URL, LIMIT)
     except requests.RequestException as e:
         print(f"RSS 조회 실패: {e}")
         return 0
 
-    conn = sqlite3.connect(DATABASE)
+    conn = sqlite3.connect(database_path or DATABASE)
     ensure_posts_table(conn)
 
     added_count = 0

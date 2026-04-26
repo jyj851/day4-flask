@@ -1,9 +1,12 @@
 import sqlite3
 from datetime import datetime
+from pathlib import Path
 from flask import Flask, render_template, request, redirect, url_for
 
+from seed import seed_posts
+
 app = Flask(__name__)
-DATABASE = "journal.db"
+DATABASE = str(Path(__file__).with_name("journal.db"))
 
 
 def get_db():
@@ -24,6 +27,15 @@ def init_db():
     """)
     conn.commit()
     conn.close()
+
+
+def ensure_seed_data():
+    conn = get_db()
+    total_posts = conn.execute("SELECT COUNT(*) FROM posts").fetchone()[0]
+    conn.close()
+
+    if total_posts == 0:
+        seed_posts(DATABASE)
 
 
 def parse_post(row):
@@ -147,6 +159,7 @@ def post_delete(post_id):
 
 with app.app_context():
     init_db()
+    ensure_seed_data()
 
 if __name__ == "__main__":
     app.run(debug=True)
